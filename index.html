@@ -4,8 +4,112 @@
 		<title>Techno Electric & Engineering Company | TEEC </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Subdomain section styling */
+			.subdomains-section {
+				background: #f8f9fa;
+				padding: 5rem 0;
+			}
+			
+			.subdomain-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+				margin-top: 3rem;
+			}
+			
+			.subdomain-card {
+				background: white;
+				border-radius: 8px;
+				overflow: hidden;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+			
+			.subdomain-card:hover {
+				transform: translateY(-10px);
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+			}
+			
+			.card-header {
+				background: #3498db;
+				color: white;
+				padding: 1.5rem;
+				text-align: center;
+			}
+			
+			.card-body {
+				padding: 2rem;
+			}
+			
+			.card-body ul {
+				list-style: none;
+				padding: 0;
+			}
+			
+			.card-body li {
+				padding: 0.8rem 0;
+				border-bottom: 1px solid #eee;
+				display: flex;
+				align-items: center;
+			}
+			
+			.card-body li:last-child {
+				border-bottom: none;
+			}
+			
+			.card-body i {
+				color: #3498db;
+				margin-right: 10px;
+				font-size: 1.2rem;
+			}
+			
+			.card-footer {
+				padding: 1.5rem;
+				background: #f8f9fa;
+				text-align: center;
+			}
+			
+			.btn {
+				display: inline-block;
+				padding: 0.8rem 2rem;
+				background: #3498db;
+				color: white;
+				border-radius: 4px;
+				text-decoration: none;
+				font-weight: 600;
+				transition: all 0.3s ease;
+				border: none;
+				cursor: pointer;
+				font-size: 1rem;
+			}
+			
+			.btn:hover {
+				background: #2980b9;
+				transform: translateY(-3px);
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			}
+			
+			/* Banner button adjustments */
+			.banner .button {
+				margin: 0.5rem;
+			}
+			
+			/* Footer adjustments */
+			.wrapper.style1.align-center {
+				padding: 3rem 0;
+			}
+			
+			/* Responsive adjustments */
+			@media screen and (max-width: 768px) {
+				.subdomain-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -17,9 +121,11 @@
 						<div class="content">
 							<h1>Welcome to Techno Electric & Engineering Company Pvt. Ltd.</h1>
 							<p class="major">Innovating for a Sustainable Future</p>
-							<ul class="actions stacked">
-								<li><a href="#first" class="button large wide smooth-scroll-middle">Get Started</a></li>
-							</ul>
+							<div style="display: flex; flex-wrap: wrap; margin-top: 2rem;">
+								<a href="#download" class="button large wide smooth-scroll-middle">Downloads</a>
+								<a href="#browse" class="button large wide smooth-scroll-middle">Browse Products</a>
+								<a href="#inquiry" class="button large wide smooth-scroll-middle">Make an Inquiry</a>
+							</div>
 						</div>
 						<div class="image">
 							<img src="images/banner.jpg" alt="" />
@@ -58,7 +164,7 @@
 										<h3>Laptops and TVs</h3>
 										<p>High-end Laptops and TVs from major brands.</p>
 										<ul class="actions fixed">
-											<li><span class="button small">Details</span></li>
+											<li><a href="#browse" class="button small smooth-scroll-middle">Browse</a></li>
 										</ul>
 									</div>
 								</article>
@@ -70,7 +176,7 @@
 										<h3>LED Solutions</h3>
 										<p>High Quality Digital Signage Systems, Large Format Displays (LFDs), Smart Interactive Boards, etc.</p>
 										<ul class="actions fixed">
-											<li><span class="button small">Details</span></li>
+											<li><a href="#browse" class="button small smooth-scroll-middle">Browse</a></li>
 										</ul>
 									</div>
 								</article>
@@ -82,7 +188,7 @@
 										<h3>Environmental Hazard Detection Solutions</h3>
 										<p>Diesel Smoke Analyzer, Multi Gas Analyzers, etc.</p>
 										<ul class="actions fixed">
-											<li><span class="button small">Details</span></li>
+											<li><a href="#browse" class="button small smooth-scroll-middle">Browse</a></li>
 										</ul>
 									</div>
 								</article>
@@ -128,9 +234,88 @@
 							</div>
 						</div>
 					</section>
+					
+				<!-- Subdomains Section -->
+				<section class="wrapper style1 align-center subdomains-section" id="subdomains">
+					<div class="inner">
+						<h2>Explore Our Services</h2>
+						<p>Access our digital resources and services with just one click</p>
+						
+						<div class="subdomain-grid">
+							<!-- Download Subdomain -->
+							<div class="subdomain-card" id="download">
+								<div class="card-header">
+									<h3><i class="fas fa-download"></i> Downloads</h3>
+								</div>
+								<div class="card-body">
+									<p>Access our resources and documents:</p>
+									<ul>
+										<li><i class="fas fa-file-pdf"></i> Product Catalogs</li>
+										<li><i class="fas fa-file-alt"></i> Technical Specifications</li>
+										<li><i class="fas fa-file-contract"></i> Warranty Documents</li>
+										<li><i class="fas fa-book"></i> User Manuals</li>
+									</ul>
+								</div>
+								<div class="card-footer">
+									<a href="/download" class="btn">Access Downloads</a>
+								</div>
+							</div>
+							
+							<!-- Browse Subdomain -->
+							<div class="subdomain-card" id="browse">
+								<div class="card-header">
+									<h3><i class="fas fa-search"></i> Browse Products</h3>
+								</div>
+								<div class="card-body">
+									<p>Explore our extensive product range:</p>
+									<ul>
+										<li><i class="fas fa-laptop"></i> Laptops & Computers</li>
+										<li><i class="fas fa-tv"></i> TVs & Displays</li>
+										<li><i class="fas fa-chalkboard"></i> Smart Boards</li>
+										<li><i class="fas fa-wind"></i> Environmental Analyzers</li>
+										<li><i class="fas fa-plug"></i> Electrical Components</li>
+									</ul>
+								</div>
+								<div class="card-footer">
+									<a href="/browse" class="btn">Browse Products</a>
+								</div>
+							</div>
+							
+							<!-- Inquiry Subdomain -->
+							<div class="subdomain-card" id="inquiry">
+								<div class="card-header">
+									<h3><i class="fas fa-question-circle"></i> Make an Inquiry</h3>
+								</div>
+								<div class="card-body">
+									<p>Get in touch with our experts:</p>
+									<ul>
+										<li><i class="fas fa-info-circle"></i> Product Information</li>
+										<li><i class="fas fa-truck"></i> Delivery Queries</li>
+										<li><i class="fas fa-tools"></i> Technical Support</li>
+										<li><i class="fas fa-handshake"></i> Partnership Opportunities</li>
+										<li><i class="fas fa-comments"></i> General Inquiries</li>
+									</ul>
+								</div>
+								<div class="card-footer">
+									<a href="/inquiry" class="btn">Submit Inquiry</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
 				<!-- Footer -->
 					<footer class="wrapper style1 align-center">
 						<div class="inner">
+							<div style="margin-bottom: 2rem;">
+								<h3>Quick Access</h3>
+								<div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+									<a href="/download" class="button">Downloads</a>
+									<a href="/browse" class="button">Browse Products</a>
+									<a href="/inquiry" class="button">Make an Inquiry</a>
+								</div>
+							</div>
+							
 							<ul class="icons">
 								<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
 								<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -138,6 +323,7 @@
 								<li><a href="#" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
 								<li><a href="#" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
 							</ul>
+							<p>&copy; Techno Electric & Engineering Company Pvt. Ltd. All rights reserved.</p>
 						</div>
 					</footer>
 
@@ -151,6 +337,20 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script>
+				// Smooth scrolling for anchor links
+				$(document).ready(function(){
+					$('a[href^="#"]').on('click', function(e) {
+						e.preventDefault();
+						
+						var target = this.hash;
+						var $target = $(target);
+						
+						$('html, body').animate({
+							'scrollTop': $target.offset().top
+						}, 800, 'swing');
+					});
+				});
+			</script>
 	</body>
 </html>
