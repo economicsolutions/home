@@ -26,6 +26,12 @@
 				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 				padding: 2rem;
 				text-align: center;
+				transition: all 0.3s ease;
+			}
+			
+			.download-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 			}
 			
 			.download-icon {
@@ -50,6 +56,36 @@
 				background: #2980b9;
 				transform: translateY(-3px);
 				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			}
+			
+			.download-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 2rem;
+				background: white;
+				border-radius: 8px;
+				overflow: hidden;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+			}
+			
+			.download-table th, .download-table td {
+				padding: 1rem;
+				text-align: left;
+				border-bottom: 1px solid #eee;
+			}
+			
+			.download-table th {
+				background-color: #3498db;
+				color: white;
+			}
+			
+			.download-table tr:hover {
+				background-color: #f8f9fa;
+			}
+			
+			.file-size {
+				color: #666;
+				font-size: 0.9rem;
 			}
 		</style>
 	</head>
@@ -85,7 +121,7 @@
 								</div>
 								<h3>Product Catalogs</h3>
 								<p>Comprehensive catalogs of our latest products and solutions</p>
-								<a href="#" class="btn-download">Download PDF</a>
+								<a href="TEEC_Product_Catalog_2023.pdf" download class="btn-download">Download PDF</a>
 							</div>
 							
 							<div class="download-card">
@@ -94,7 +130,7 @@
 								</div>
 								<h3>Technical Specifications</h3>
 								<p>Detailed technical specifications for all our products</p>
-								<a href="#" class="btn-download">Download PDF</a>
+								<a href="Technical_Specifications.pdf" download class="btn-download">Download PDF</a>
 							</div>
 							
 							<div class="download-card">
@@ -103,7 +139,7 @@
 								</div>
 								<h3>Warranty Documents</h3>
 								<p>Warranty information and claim forms</p>
-								<a href="#" class="btn-download">Download PDF</a>
+								<a href="Warranty_Documents.pdf" download class="btn-download">Download PDF</a>
 							</div>
 							
 							<div class="download-card">
@@ -112,9 +148,66 @@
 								</div>
 								<h3>User Manuals</h3>
 								<p>Product manuals and installation guides</p>
-								<a href="#" class="btn-download">Download PDF</a>
+								<a href="User_Manuals.zip" download class="btn-download">Download ZIP</a>
 							</div>
 						</div>
+						
+						<h3 style="margin-top: 4rem;">Complete Download List</h3>
+						
+						<table class="download-table">
+							<thead>
+								<tr>
+									<th>File Name</th>
+									<th>Category</th>
+									<th>Size</th>
+									<th>Download</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>TEEC_Product_Catalog_2023.pdf</td>
+									<td>Catalog</td>
+									<td class="file-size">3.2 MB</td>
+									<td><a href="TEEC_Product_Catalog_2023.pdf" download class="btn-download">Download</a></td>
+								</tr>
+								<tr>
+									<td>Technical_Specifications.pdf</td>
+									<td>Technical</td>
+									<td class="file-size">1.8 MB</td>
+									<td><a href="Technical_Specifications.pdf" download class="btn-download">Download</a></td>
+								</tr>
+								<tr>
+									<td>Warranty_Documents.pdf</td>
+									<td>Legal</td>
+									<td class="file-size">850 KB</td>
+									<td><a href="Warranty_Documents.pdf" download class="btn-download">Download</a></td>
+								</tr>
+								<tr>
+									<td>Smart_Board_Manual.pdf</td>
+									<td>User Manual</td>
+									<td class="file-size">2.1 MB</td>
+									<td><a href="Smart_Board_Manual.pdf" download class="btn-download">Download</a></td>
+								</tr>
+								<tr>
+									<td>LFD_Installation_Guide.pdf</td>
+									<td>User Manual</td>
+									<td class="file-size">1.5 MB</td>
+									<td><a href="LFD_Installation_Guide.pdf" download class="btn-download">Download</a></td>
+								</tr>
+								<tr>
+									<td>Gas_Analyzer_Specs.pdf</td>
+									<td>Technical</td>
+									<td class="file-size">980 KB</td>
+									<td><a href="Gas_Analyzer_Specs.pdf" download class="btn-download">Download</a></td>
+								</tr>
+								<tr>
+									<td>User_Manuals.zip</td>
+									<td>User Manual</td>
+									<td class="file-size">15.4 MB</td>
+									<td><a href="User_Manuals.zip" download class="btn-download">Download ZIP</a></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</section>
 
