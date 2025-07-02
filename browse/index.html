@@ -1,11 +1,126 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Techno Electric & Engineering Company | TEEC </title>
+		<title>Browse Products | TEEC</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+			.products-section {
+				padding: 5rem 0;
+			}
+			
+			.product-filters {
+				display: flex;
+				justify-content: center;
+				gap: 1rem;
+				margin-bottom: 2rem;
+				flex-wrap: wrap;
+			}
+			
+			.filter-btn {
+				padding: 0.8rem 1.5rem;
+				background: #f8f9fa;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+			
+			.filter-btn:hover, .filter-btn.active {
+				background: #3498db;
+				color: white;
+				border-color: #3498db;
+			}
+			
+			.product-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+				gap: 2rem;
+				margin-top: 2rem;
+			}
+			
+			.product-card {
+				background: white;
+				border-radius: 8px;
+				overflow: hidden;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+				transition: all 0.3s ease;
+			}
+			
+			.product-card:hover {
+				transform: translateY(-10px);
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+			}
+			
+			.product-image {
+				height: 200px;
+				background-color: #f8f9fa;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 1rem;
+			}
+			
+			.product-image img {
+				max-width: 100%;
+				max-height: 180px;
+			}
+			
+			.product-details {
+				padding: 1.5rem;
+			}
+			
+			.product-title {
+				font-size: 1.2rem;
+				margin-bottom: 0.5rem;
+				color: #2c3e50;
+			}
+			
+			.product-price {
+				font-weight: bold;
+				color: #3498db;
+				font-size: 1.2rem;
+				margin-bottom: 1rem;
+			}
+			
+			.product-actions {
+				display: flex;
+				gap: 0.5rem;
+				margin-top: 1rem;
+			}
+			
+			.btn-outline {
+				background: transparent;
+				border: 1px solid #3498db;
+				color: #3498db;
+			}
+			
+			.btn-outline:hover {
+				background: #3498db;
+				color: white;
+			}
+			
+			.product-specs {
+				list-style: none;
+				padding: 0;
+				margin-top: 1rem;
+				font-size: 0.9rem;
+			}
+			
+			.product-specs li {
+				margin-bottom: 0.3rem;
+				display: flex;
+			}
+			
+			.product-specs li i {
+				color: #3498db;
+				margin-right: 0.5rem;
+				min-width: 20px;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -15,122 +130,173 @@
 				<!-- Banner -->
 					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
 						<div class="content">
-							<h1>Welcome to Techno Electric & Engineering Company Pvt. Ltd.</h1>
-							<p class="major">Innovating for a Sustainable Future</p>
+							<h1>Browse Our Products</h1>
+							<p class="major">Explore our range of innovative electrical and engineering solutions</p>
 							<ul class="actions stacked">
-								<li><a href="#first" class="button large wide smooth-scroll-middle">Get Started</a></li>
+								<li><a href="../index.html" class="button large wide">Back to Home</a></li>
 							</ul>
 						</div>
 						<div class="image">
-							<img src="images/banner.jpg" alt="" />
+							<img src="../images/banner.jpg" alt="" />
 						</div>
 					</section>
 
-				<!-- Spotlight -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
-						<div class="content">
-							<h2>Who We Are</h2>
-							<p><strong>Techno Electric and Engineering Company Pvt. Ltd. (TEEC)</strong>, based in Kathmandu, Nepal, is a forward-thinking technology and engineering enterprise &ndash; <strong>committed to sustainable and socially responsible business practices</strong> &ndash; specializing in importing and distributing a wide range of <strong>electrical and electronic products</strong> &ndash;from leading global brands.</p>
-							<p>We are particularly focused on <strong>&ndash;Introducing and Promoting Solutions &ndash;</strong> that help <strong>reduce environmental impact and support community well-being </strong>, while generating sustainable profits.
-							<ul class="actions stacked">
-								<li><a href="#second" class="button large wide smooth-scroll-middle">Learn More</a></li>
-							</ul>
+				<!-- Products Section -->
+				<section class="wrapper style1 align-center products-section">
+					<div class="inner">
+						<h2>Our Product Portfolio</h2>
+						<p>Discover our wide range of products designed for innovation and sustainability</p>
+						
+						<div class="product-filters">
+							<button class="filter-btn active" data-filter="all">All Products</button>
+							<button class="filter-btn" data-filter="laptops">Laptops</button>
+							<button class="filter-btn" data-filter="tvs">TVs & Displays</button>
+							<button class="filter-btn" data-filter="signage">Digital Signage</button>
+							<button class="filter-btn" data-filter="analyzers">Analyzers</button>
 						</div>
-						<div class="image">
-							<img src="images/spotlight01.jpg" alt="" />
-						</div>
-					</section>
-
-				<!-- Gallery -->
-					<section class="wrapper style1 align-center" id="second">
-						<div class="inner">
-							<h2>What we offer</h2>
-							<p>Our core offerings include <strong>&ndash; Laptops &ndash; Televisions &ndash; Digital Signage Systems &ndash; Large format displays (LFDs) &ndash; Smart Boards (Education and Advertising) &ndash; Smoke and Gas analyzers &ndash;</strong> and more.</p>
-						</div>
-
-						<!-- Gallery -->
-							<div class="gallery style2 medium lightbox onscroll-fade-in">
-								<article>
-									<a href="images/gallery/fulls/01.jpg" class="image">
-										<img src="images/gallery/thumbs/01.jpg" alt="" />
-									</a>
-									<div class="caption">
-										<h3>Laptops and TVs</h3>
-										<p>High-end Laptops and TVs from major brands.</p>
-										<ul class="actions fixed">
-											<li><span class="button small">Details</span></li>
-										</ul>
+						
+						<div class="product-grid">
+							<!-- Product 1 -->
+							<div class="product-card" data-category="laptops">
+								<div class="product-image">
+									<img src="../images/products/laptop1.png" alt="Acer Swift 5 Laptop">
+								</div>
+								<div class="product-details">
+									<h3 class="product-title">Acer Swift 5 Laptop</h3>
+									<div class="product-price">$1,299.99</div>
+									<ul class="product-specs">
+										<li><i class="fas fa-microchip"></i> Intel Core i7-1165G7</li>
+										<li><i class="fas fa-memory"></i> 16GB RAM, 1TB SSD</li>
+										<li><i class="fas fa-desktop"></i> 14" FHD IPS Touchscreen</li>
+										<li><i class="fas fa-weight"></i> 2.3 lbs | 1.04 kg</li>
+									</ul>
+									<div class="product-actions">
+										<a href="#" class="btn">View Details</a>
+										<a href="Acer_Swift_5_Specs.pdf" download class="btn btn-outline">Download Specs</a>
 									</div>
-								</article>
-								<article>
-									<a href="images/gallery/fulls/02.jpg" class="image">
-										<img src="images/gallery/thumbs/02.jpg" alt="" />
-									</a>
-									<div class="caption">
-										<h3>LED Solutions</h3>
-										<p>High Quality Digital Signage Systems, Large Format Displays (LFDs), Smart Interactive Boards, etc.</p>
-										<ul class="actions fixed">
-											<li><span class="button small">Details</span></li>
-										</ul>
-									</div>
-								</article>
-								<article>
-									<a href="images/gallery/fulls/03.jpg" class="image">
-										<img src="images/gallery/thumbs/03.jpg" alt="" />
-									</a>
-									<div class="caption">
-										<h3>Environmental Hazard Detection Solutions</h3>
-										<p>Diesel Smoke Analyzer, Multi Gas Analyzers, etc.</p>
-										<ul class="actions fixed">
-											<li><span class="button small">Details</span></li>
-										</ul>
-									</div>
-								</article>
+								</div>
 							</div>
-
-					</section>
-
-				<!-- Items -->
-					<section class="wrapper style1 align-center">
-						<div class="inner">
-							<h2>Browse our Items</h2>
-							<div class="items style1 medium onscroll-fade-in">
-								<section>
-									<span class="icon solid style2 major fa-solid fa-laptop"></span>
-									<h3>Laptops</h3>
-        								<p>Brands: Acer, Dell, Lenovo, HP, MSI and more.</p>
-    							</section>
-								<section>
-									<span class="icon solid style2 major fa-solid fa-tv"></span>
-									<h3>LED TVs</h3>
-									<p>Samsung, LG, Himstar, Sony, TCL, Hisense, Skyworth and more.</p>
-								</section>
-								<section>
-									<span class="icon solid style2 major fa-solid fa-sign"></span>
-									<h3>Digital Signage Systems</h3>
-									<p>Large-scale digital displays for dynamic content delivery in public spaces, retail, and corporate environments.</p>
-								</section>
-								<section>
-									<span class="icon solid style2 major fa-solid fa-pause"></span>
-									<h3>Large Format Displays (LFDs)</h3>
-									<p>High-resolution screens designed for commercial and professional applications, including presentations, video walls, and interactive kiosks.</p>
-								</section>
-								<section>
-									<span class="icon solid style2 major fa-solid fa-chalkboard"></span>
-									<h3>Smart Boards</h3>
-									<p>Interactive whiteboards enhancing collaboration and learning in educational settings and effective advertising displays.</p>
-								</section>
-								<section>
-									<span class="icon solid style2 major fa-solid fa-smog"></span>
-									<h3>Smoke and Gas Analyzers</h3>
-									<p>Advanced systems for detecting and analyzing smoke, gas, and air quality for safety, environmental monitoring, and industrial applications.</p>
-								</section>
+							
+							<!-- Product 2 -->
+							<div class="product-card" data-category="tvs">
+								<div class="product-image">
+									<img src="../images/products/samsung-tv.png" alt="Samsung QLED 4K TV">
+								</div>
+								<div class="product-details">
+									<h3 class="product-title">Samsung QLED 4K TV</h3>
+									<div class="product-price">$1,799.99</div>
+									<ul class="product-specs">
+										<li><i class="fas fa-tv"></i> 65" Quantum Dot Display</li>
+										<li><i class="fas fa-bolt"></i> Quantum HDR 12X</li>
+										<li><i class="fas fa-microchip"></i> Quantum Processor 4K</li>
+										<li><i class="fas fa-volume-up"></i> Object Tracking Sound</li>
+									</ul>
+									<div class="product-actions">
+										<a href="#" class="btn">View Details</a>
+										<a href="Samsung_QLED_Specs.pdf" download class="btn btn-outline">Download Specs</a>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Product 3 -->
+							<div class="product-card" data-category="signage">
+								<div class="product-image">
+									<img src="../images/products/digital-signage.png" alt="Digital Signage Display">
+								</div>
+								<div class="product-details">
+									<h3 class="product-title">Professional Digital Signage</h3>
+									<div class="product-price">$2,499.99</div>
+									<ul class="product-specs">
+										<li><i class="fas fa-desktop"></i> 55" Commercial Display</li>
+										<li><i class="fas fa-sun"></i> 700 nits Brightness</li>
+										<li><i class="fas fa-clock"></i> 24/7 Operation Ready</li>
+										<li><i class="fas fa-plug"></i> LAN/RS232 Control</li>
+									</ul>
+									<div class="product-actions">
+										<a href="#" class="btn">View Details</a>
+										<a href="Digital_Signage_Specs.pdf" download class="btn btn-outline">Download Specs</a>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Product 4 -->
+							<div class="product-card" data-category="analyzers">
+								<div class="product-image">
+									<img src="../images/products/gas-analyzer.png" alt="Multi-Gas Analyzer">
+								</div>
+								<div class="product-details">
+									<h3 class="product-title">Multi-Gas Analyzer Pro</h3>
+									<div class="product-price">$3,450.00</div>
+									<ul class="product-specs">
+										<li><i class="fas fa-wind"></i> Measures CO, CO2, NOx, O2</li>
+										<li><i class="fas fa-microchip"></i> Advanced Sensor Technology</li>
+										<li><i class="fas fa-database"></i> Data Logging & Reporting</li>
+										<li><i class="fas fa-battery-full"></i> 10+ Hours Battery</li>
+									</ul>
+									<div class="product-actions">
+										<a href="#" class="btn">View Details</a>
+										<a href="Gas_Analyzer_Specs.pdf" download class="btn btn-outline">Download Specs</a>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Product 5 -->
+							<div class="product-card" data-category="laptops">
+								<div class="product-image">
+									<img src="../images/products/dell-laptop.png" alt="Dell XPS 15">
+								</div>
+								<div class="product-details">
+									<h3 class="product-title">Dell XPS 15 Laptop</h3>
+									<div class="product-price">$1,899.99</div>
+									<ul class="product-specs">
+										<li><i class="fas fa-microchip"></i> Intel Core i9-12900H</li>
+										<li><i class="fas fa-memory"></i> 32GB RAM, 1TB SSD</li>
+										<li><i class="fas fa-desktop"></i> 15.6" OLED 3.5K Display</li>
+										<li><i class="fas fa-battery-full"></i> 8 Hours Battery Life</li>
+									</ul>
+									<div class="product-actions">
+										<a href="#" class="btn">View Details</a>
+										<a href="Dell_XPS_15_Specs.pdf" download class="btn btn-outline">Download Specs</a>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Product 6 -->
+							<div class="product-card" data-category="tvs">
+								<div class="product-image">
+									<img src="../images/products/lg-tv.png" alt="LG OLED TV">
+								</div>
+								<div class="product-details">
+									<h3 class="product-title">LG OLED 4K TV</h3>
+									<div class="product-price">$2,199.99</div>
+									<ul class="product-specs">
+										<li><i class="fas fa-tv"></i> 65" OLED evo Display</li>
+										<li><i class="fas fa-bolt"></i> α9 Gen5 AI Processor</li>
+										<li><i class="fas fa-gamepad"></i> 120Hz Refresh Rate</li>
+										<li><i class="fas fa-volume-up"></i> Dolby Atmos Sound</li>
+									</ul>
+									<div class="product-actions">
+										<a href="#" class="btn">View Details</a>
+										<a href="LG_OLED_Specs.pdf" download class="btn btn-outline">Download Specs</a>
+									</div>
+								</div>
 							</div>
 						</div>
-					</section>
+					</div>
+				</section>
+
 				<!-- Footer -->
 					<footer class="wrapper style1 align-center">
 						<div class="inner">
+							<div style="margin-bottom: 2rem;">
+								<h3>Quick Access</h3>
+								<div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+									<a href="../index.html" class="button">Home</a>
+									<a href="../downloads/index.html" class="button">Downloads</a>
+									<a href="../inquiry/index.html" class="button">Make an Inquiry</a>
+								</div>
+							</div>
+							
 							<ul class="icons">
 								<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
 								<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -138,19 +304,37 @@
 								<li><a href="#" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
 								<li><a href="#" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
 							</ul>
+							<p>&copy; Techno Electric & Engineering Company Pvt. Ltd. All rights reserved.</p>
 						</div>
 					</footer>
 
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+			<script>
+				$(document).ready(function() {
+					// Filter products
+					$('.filter-btn').click(function() {
+						$('.filter-btn').removeClass('active');
+						$(this).addClass('active');
+						
+						var filter = $(this).data('filter');
+						
+						if (filter === 'all') {
+							$('.product-card').show();
+						} else {
+							$('.product-card').hide();
+							$('.product-card[data-category="' + filter + '"]').show();
+						}
+					});
+				});
+			</script>
 	</body>
 </html>
