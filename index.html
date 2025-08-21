@@ -6,25 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Base */
-    body {
+    /* ===== Base ===== */
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: 'Arial', sans-serif;
       color: #333;
       background: #fff;
+      overflow-x: hidden; /* prevent side-scroll */
     }
 
-    /* Navbar (desktop/base) */
+    /* ===== Navbar ===== */
     header {
       position: absolute;
       top: 0;
       width: 100%;
       display: flex;
-      justify-content: space-between;   /* desktop: logo left, nav right */
+      justify-content: flex-start; /* logo & nav in a row */
       align-items: center;
       padding: 0.8rem 1rem;
       z-index: 10;
-      flex-wrap: nowrap;
     }
 
     header h1 {
@@ -34,14 +35,15 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      flex: 1 1 auto;                  /* allow the brand to give up space if needed */
+      flex: 0 0 auto;        /* don’t grow to fill */
+      margin-right: 2rem;    /* gap between logo & nav */
     }
 
     nav {
       display: flex;
       gap: 1rem;
       white-space: nowrap;
-      flex-shrink: 0;                   /* keep nav from shrinking/clipping */
+      flex-shrink: 0;
     }
 
     nav a {
@@ -49,13 +51,14 @@
       text-decoration: none;
       font-weight: 500;
       font-size: clamp(0.9rem, 2vw, 1rem);
-      flex-shrink: 0;                   /* prevent chopping of link text */
+      flex-shrink: 0;
     }
 
-    /* Hero Section */
+    /* ===== Hero Section ===== */
     .hero {
       height: 100vh;
-      background: url("images/hero-bg.png") no-repeat center center/cover;
+      width: 100%;
+      background: url("images/hero-bg.png") no-repeat center center / cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,6 +78,7 @@
       color: #fff;
       max-width: 800px;
       z-index: 2;
+      padding: 0 1rem;
     }
 
     .hero h2 {
@@ -96,7 +100,7 @@
       font-weight: bold;
     }
 
-    /* Section Base */
+    /* ===== Section Base ===== */
     section {
       padding: 5rem 2rem;
       max-width: 1100px;
@@ -108,7 +112,7 @@
       margin-bottom: 2rem;
     }
 
-    /* About Section */
+    /* ===== About ===== */
     .about p {
       text-align: center;
       font-size: 1.1rem;
@@ -121,6 +125,7 @@
       justify-content: center;
       gap: 2rem;
       margin-top: 2rem;
+      flex-wrap: wrap;
     }
 
     .icon-box {
@@ -133,7 +138,7 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Services */
+    /* ===== Services ===== */
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -161,7 +166,7 @@
       margin-bottom: 1rem;
     }
 
-    /* Contact */
+    /* ===== Contact ===== */
     .contact form {
       max-width: 600px;
       margin: auto;
@@ -186,7 +191,7 @@
       cursor: pointer;
     }
 
-    /* Footer */
+    /* ===== Footer ===== */
     footer {
       text-align: center;
       padding: 2rem;
@@ -199,27 +204,27 @@
       color: #3498db;
     }
 
-    /* Mobile overrides: place at the very end */
+    /* ===== Mobile Overrides ===== */
     @media (max-width: 480px) {
-    @media (max-width: 480px) {
-  header {
-    justify-content: flex-start;
-    padding: 0.6rem 0.8rem;
-  }
-
-  header h1 {
-    flex: 0 0 auto;       /* ✅ don't grow — take only needed width */
-    font-size: 1rem;
-    margin-right: 1rem;   /* gap between logo and nav */
-  }
-
-  nav {
-    gap: 0.6rem;
-  }
-
-  nav a {
-    font-size: 0.85rem;
-  }
+      header {
+        padding: 0.6rem 0.8rem;
+      }
+      header h1 {
+        font-size: 1rem;
+        margin-right: 1rem;
+      }
+      nav {
+        gap: 0.6rem;
+      }
+      nav a {
+        font-size: 0.85rem;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -284,28 +289,27 @@
       </div>
     </div>
   </section>
-
-  <!-- Contact -->
+<!-- Contact -->
   <section class="contact" id="contact">
-    <h2>Let’s Work Together</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message"></textarea>
+    <h2>Get in Touch</h2>
+    <form action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
 
   <!-- Footer -->
   <footer>
+    <p>&copy; 2025 Economic Solutions Consulting Group. All rights reserved.</p>
     <div class="icons">
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
       <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fas fa-envelope"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
-    <p>&copy; 2025 Economic Solutions – Consulting Group. All rights reserved.</p>
   </footer>
 
 </body>
 </html>
+  
