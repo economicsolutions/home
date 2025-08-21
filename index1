@@ -1,1 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Economic Solutions Consulting Group | ESCG</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Custom Styles */
+			.services-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 2rem;
+				margin-top: 3rem;
+			}
 
+			.service-card {
+				background: #fff;
+				border-radius: 8px;
+				padding: 2rem;
+				box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+
+			.service-card:hover {
+				transform: translateY(-8px);
+				box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+			}
+
+			.service-card i {
+				color: #3498db;
+				font-size: 2rem;
+				margin-bottom: 1rem;
+			}
+
+			.contact-form {
+				max-width: 600px;
+				margin: auto;
+				text-align: left;
+			}
+
+			.contact-form input, 
+			.contact-form textarea {
+				width: 100%;
+				padding: 0.8rem;
+				margin-bottom: 1rem;
+				border-radius: 4px;
+				border: 1px solid #ccc;
+			}
+
+			.contact-form button {
+				background: #3498db;
+				color: #fff;
+				border: none;
+				padding: 0.8rem 2rem;
+				border-radius: 4px;
+				cursor: pointer;
+				transition: background 0.3s;
+			}
+
+			.contact-form button:hover {
+				background: #2980b9;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<div id="wrapper" class="divided">
+
+			<!-- Hero Banner -->
+			<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+				<div class="content">
+					<div style="display: flex; flex-wrap: wrap; margin-top: 0rem;">
+						<a href="#about" class="button large normal smooth-scroll">About</a>
+						<a href="#services" class="button large normal smooth-scroll">Services</a>
+						<a href="#insights" class="button large normal smooth-scroll">Insights</a>
+						<a href="#contact" class="button large normal smooth-scroll">Contact</a>
+					</div>
+					<h1>Economic Solutions</h1>
+					<p class="major">CONSULTING GROUP</p>
+					<p class="major">The Growth Catalyst</p>
+					<p class="minor">Turning Data into Solutions — Driving Growth for Business, Government, and Society.</p>
+				</div>
+				<div class="image">
+					<img src="images/banner.jpg" alt="Kathmandu city skyline with data overlay" />
+				</div>
+			</section>
+
+			<!-- About Us -->
+			<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="about">
+				<div class="content">
+					<h2>Who We Are</h2>
+					<p><strong>Economic Solutions – Consulting Group (ESCG)</strong>, based in Kathmandu, Nepal, is founded by professionals in <strong>economics, engineering, finance, law, and accounting</strong>. </p>
+					<p>Our mission is simple: <strong>make decisions smarter, faster, and more impactful</strong>.</p>
+				</div>
+				<div class="image">
+					<img src="images/team.jpg" alt="Founding team illustration" />
+				</div>
+			</section>
+
+			<!-- Services -->
+			<section class="wrapper style1 align-center" id="services">
+				<div class="inner">
+					<h2>What We Do</h2>
+					<p>We provide practical strategy and data-driven solutions to help businesses, governments, and organizations thrive.</p>
+					<div class="services-grid">
+						<div class="service-card">
+							<i class="fas fa-briefcase"></i>
+							<h3>Business Strategy</h3>
+							<p>Market entry, growth planning, and transformation roadmaps.</p>
+						</div>
+						<div class="service-card">
+							<i class="fas fa-landmark"></i>
+							<h3>Policy & Economics</h3>
+							<p>Impact assessments, regulatory advisory, public program design.</p>
+						</div>
+						<div class="service-card">
+							<i class="fas fa-chart-line"></i>
+							<h3>Data & Analytics</h3>
+							<p>Dashboards, predictive insights, geospatial and economic mapping.</p>
+						</div>
+						<div class="service-card">
+							<i class="fas fa-coins"></i>
+							<h3>Finance & Risk</h3>
+							<p>Capital planning, investment advisory, and risk frameworks.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Insights -->
+			<section class="wrapper style1 align-center" id="insights">
+				<div class="inner">
+					<h2>Our Insights</h2>
+					<p>We share brief perspectives on key economic and business issues shaping Nepal and beyond.</p>
+					<div class="items style1 medium onscroll-fade-in">
+						<section>
+							<span class="icon solid style2 major fa-lightbulb"></span>
+							<h3>How SMEs Can Use Data to Grow</h3>
+							<p>Quick wins for small businesses using public data to guide decisions.</p>
+						</section>
+						<section>
+							<span class="icon solid style2 major fa-seedling"></span>
+							<h3>Green Finance in Nepal</h3>
+							<p>Why the next wave of growth depends on climate-smart projects.</p>
+						</section>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact -->
+			<section class="wrapper style1 align-center" id="contact">
+				<div class="inner">
+					<h2>Let’s Work Together</h2>
+					<div class="contact-form">
+						<form>
+							<input type="text" name="name" placeholder="Your Name" required>
+							<input type="email" name="email" placeholder="Your Email" required>
+							<textarea name="message" rows="5" placeholder="Your Message"></textarea>
+							<button type="submit">Send Message</button>
+						</form>
+					</div>
+				</div>
+			</section>
+
+			<!-- Footer -->
+			<footer class="wrapper style1 align-center">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<p>&copy; 2025 Economic Solutions – Consulting Group. All rights reserved.</p>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('a[href^="#"]').on('click', function(e) {
+					e.preventDefault();
+					var target = this.hash;
+					var $target = $(target);
+					$('html, body').animate({
+						'scrollTop': $target.offset().top
+					}, 800, 'swing');
+				});
+			});
+		</script>
+	</body>
+</html>
