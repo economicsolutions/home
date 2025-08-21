@@ -1,51 +1,57 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
-  <title>Economic Solutions Consulting Group | ESCG</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Economic Solutions Consulting Group | ESCG</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* ===== Base ===== */
+    /* ==== Variables & Reset ==== */
+    :root {
+      --header-height: 4rem;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
       color: #333;
       background: #fff;
-      overflow-x: hidden; /* prevent side-scroll */
     }
 
-    /* ===== Navbar ===== */
+    /* ==== Navbar ==== */
     header {
       position: absolute;
       top: 0;
-      width: 100%;
+      left: 0;
+      width: 100vw;
+      height: var(--header-height);
       display: flex;
-      justify-content: flex-start; /* logo & nav in a row */
       align-items: center;
-      padding: 0.8rem 1rem;
-      z-index: 10;
+      justify-content: flex-start;
+      padding: 0 1rem;
+      z-index: 1000;
     }
-
     header h1 {
+      margin: 0;
+      flex: 0 0 auto;
       color: #fff;
       font-size: clamp(1rem, 3.2vw, 1.5rem);
-      margin: 0;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      flex: 0 0 auto;        /* don’t grow to fill */
-      margin-right: 2rem;    /* gap between logo & nav */
+      margin-right: 2rem; /* initial gap */
     }
-
     nav {
       display: flex;
       gap: 1rem;
       white-space: nowrap;
       flex-shrink: 0;
     }
-
     nav a {
       color: #fff;
       text-decoration: none;
@@ -54,44 +60,41 @@
       flex-shrink: 0;
     }
 
-    /* ===== Hero Section ===== */
+    /* ==== Hero ==== */
     .hero {
+      position: relative;
+      margin: 0;
+      width: 100vw;
       height: 100vh;
-      width: 100%;
       background: url("images/hero-bg.png") no-repeat center center / cover;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
     }
-
     .hero::after {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.55);
     }
-
     .hero-content {
       position: relative;
-      color: #fff;
+      z-index: 1;
       max-width: 800px;
-      z-index: 2;
       padding: 0 1rem;
+      color: #fff;
     }
-
-    .hero h2 {
+    .hero-content h2 {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
-
-    .hero p {
+    .hero-content p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
     }
-
-    .hero a {
+    .hero-content a {
+      display: inline-block;
       padding: 0.8rem 2rem;
       background: #3498db;
       color: #fff;
@@ -100,87 +103,80 @@
       font-weight: bold;
     }
 
-    /* ===== Section Base ===== */
+    /* ==== Sections ==== */
     section {
       padding: 5rem 2rem;
       max-width: 1100px;
       margin: auto;
     }
-
-    h2 {
+    section h2 {
       text-align: center;
       margin-bottom: 2rem;
     }
 
-    /* ===== About ===== */
+    /* About */
     .about p {
       text-align: center;
       font-size: 1.1rem;
       max-width: 800px;
       margin: auto;
     }
-
     .icon-row {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 2rem;
       margin-top: 2rem;
-      flex-wrap: wrap;
     }
-
     .icon-box {
       text-align: center;
     }
-
     .icon-box i {
       font-size: 2rem;
       color: #3498db;
       margin-bottom: 0.5rem;
     }
 
-    /* ===== Services ===== */
+    /* Services */
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       margin-top: 3rem;
     }
-
     .service-card {
       background: #fff;
       padding: 2rem;
       text-align: center;
       border-radius: 8px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transition: 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .service-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 12px 25px rgba(0,0,0,0.15);
     }
-
     .service-card i {
       font-size: 2rem;
       color: #3498db;
       margin-bottom: 1rem;
     }
 
-    /* ===== Contact ===== */
+    /* Contact */
     .contact form {
       max-width: 600px;
       margin: auto;
       display: flex;
       flex-direction: column;
     }
-
-    .contact input, .contact textarea {
+    .contact input,
+    .contact textarea {
       margin-bottom: 1rem;
       padding: 0.8rem;
-      border-radius: 4px;
       border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
     }
-
     .contact button {
       padding: 0.8rem;
       background: #3498db;
@@ -191,23 +187,27 @@
       cursor: pointer;
     }
 
-    /* ===== Footer ===== */
+    /* Footer */
     footer {
       text-align: center;
       padding: 2rem;
       background: #f4f4f4;
       font-size: 0.9rem;
     }
-
+    footer .icons {
+      margin-top: 1rem;
+    }
     footer .icons a {
       margin: 0 0.5rem;
       color: #3498db;
+      font-size: 1.2rem;
+      text-decoration: none;
     }
 
-    /* ===== Mobile Overrides ===== */
+    /* ==== Mobile Tweaks ==== */
     @media (max-width: 480px) {
       header {
-        padding: 0.6rem 0.8rem;
+        padding: 0 0.8rem;
       }
       header h1 {
         font-size: 1rem;
@@ -219,10 +219,10 @@
       nav a {
         font-size: 0.85rem;
       }
-      .hero h2 {
+      .hero-content h2 {
         font-size: 2rem;
       }
-      .hero p {
+      .hero-content p {
         font-size: 1rem;
       }
     }
@@ -250,11 +250,13 @@
   </section>
 
   <!-- About -->
-  <section class="about" id="about">
+  <section id="about" class="about">
     <h2>Who We Are</h2>
-    <p>Economic Solutions – Consulting Group (The Growth Catalyst) is a Kathmandu-based advisory firm. 
-    We combine economics, engineering, finance, law, and accounting to solve today’s toughest challenges. 
-    Our vision is to become a world-class consulting group, built from Nepal to the world.</p>
+    <p>
+      Economic Solutions – Consulting Group (The Growth Catalyst) is a Kathmandu-based advisory firm.
+      We combine economics, engineering, finance, law, and accounting to solve today’s toughest challenges.
+      Our vision is to become a world-class consulting group, built from Nepal to the world.
+    </p>
     <div class="icon-row">
       <div class="icon-box"><i class="fas fa-chart-pie"></i><p>Economics</p></div>
       <div class="icon-box"><i class="fas fa-cogs"></i><p>Engineering</p></div>
@@ -289,9 +291,10 @@
       </div>
     </div>
   </section>
-<!-- Contact -->
-  <section class="contact" id="contact">
-    <h2>Get in Touch</h2>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Let’s Work Together</h2>
     <form action="#" method="post">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
@@ -305,11 +308,10 @@
     <p>&copy; 2025 Economic Solutions Consulting Group. All rights reserved.</p>
     <div class="icons">
       <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
   </footer>
 
 </body>
 </html>
-  
