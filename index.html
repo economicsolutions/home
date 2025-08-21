@@ -201,23 +201,25 @@
 
     /* Mobile overrides: place at the very end */
     @media (max-width: 480px) {
-      header {
-        justify-content: flex-start;     /* pull nav left next to logo */
-        padding: 0.6rem 0.8rem;
-      }
+    @media (max-width: 480px) {
+  header {
+    justify-content: flex-start;
+    padding: 0.6rem 0.8rem;
+  }
 
-      nav {
-        margin-left: 1rem;              /* control gap between logo and About */
-        gap: 0.6rem;                    /* tighter spacing on small screens */
-      }
+  header h1 {
+    flex: 0 0 auto;       /* ✅ don't grow — take only needed width */
+    font-size: 1rem;
+    margin-right: 1rem;   /* gap between logo and nav */
+  }
 
-      header h1 {
-        font-size: 1rem;                /* slightly smaller logo text */
-      }
+  nav {
+    gap: 0.6rem;
+  }
 
-      nav a {
-        font-size: 0.85rem;             /* keep all link text visible */
-      }
+  nav a {
+    font-size: 0.85rem;
+  }
     }
   </style>
 </head>
