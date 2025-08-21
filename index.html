@@ -6,19 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @media (max-width: 480px) {
-  header { padding: 0.6rem 0.8rem; }
-  /* ❌ remove this line: header h1 { max-width: 50vw; } */
-  nav { gap: 0.75rem; }
-  nav a { font-size: 0.8rem; }
-  header h1 {
-    font-size: 1rem;
-    flex: 1 1 auto;        /* let brand shrink if needed */
+     @media (max-width: 480px) {
+  header {
+    justify-content: flex-start;
   }
-  nav a {
-    flex-shrink: 0;        /* stop link text from being chopped */
+
+  nav {
+    margin-left: 2rem; /* adjust this number to fine‑tune the gap */
   }
-    }
+     }
     
     body {
       margin: 0;
