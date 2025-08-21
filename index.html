@@ -15,15 +15,20 @@
 
     /* Navbar */
     header {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 3rem;
-      z-index: 10;
-    }
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;   /* reduced for mobile fit */
+  z-index: 10;
+  flex-wrap: nowrap;      /* stops breaking into new line */
+}
+
+header h1 {
+  white-space: nowrap;    /* keeps brand name on one line */
+}
 
     header h1 {
       color: #fff;
