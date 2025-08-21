@@ -1,12 +1,14 @@
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>Economic Solutions Consulting Group | ESCG</title>
+  
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     /* ==== Variables & Reset ==== */
     :root {
@@ -29,7 +31,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%; /* Avoids 100vw scrollbar issue */
       height: var(--header-height);
       display: flex;
       align-items: center;
@@ -45,7 +47,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-right: 2rem; /* initial gap */
+      margin-right: 2rem;
     }
     nav {
       display: flex;
@@ -65,7 +67,7 @@
     .hero {
       position: relative;
       margin: 0;
-      width: 100vw;
+      width: 100%;
       height: 100vh;
       background: url("images/hero-bg.png") no-repeat center center / cover;
       display: flex;
@@ -76,17 +78,17 @@
     .hero::after {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      inset: 0; /* Shorthand for top/right/bottom/left: 0 */
       background: rgba(0,0,0,0.55);
     }
     .hero-content {
       position: relative;
       z-index: 1;
       max-width: 800px;
-      padding: 0 1rem;
+      padding: 2rem 1rem 0; /* Top padding offsets fixed header visually */
       color: #fff;
     }
-    .hero-content h2 {
+    .hero-content h1 { /* Changed to h1 for page semantic */
       font-size: 3rem;
       margin-bottom: 1rem;
     }
@@ -220,7 +222,7 @@
       nav a {
         font-size: 0.85rem;
       }
-      .hero-content h2 {
+      .hero-content h1 {
         font-size: 2rem;
       }
       .hero-content p {
@@ -244,7 +246,7 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
-      <h2>Turning Data into Solutions.</h2>
+      <h1>Turning Data into Solutions.</h1>
       <p>Driving Growth for Business, Government, and Society.</p>
       <a href="#contact">Let's Talk</a>
     </div>
@@ -281,7 +283,8 @@
         <p>Impact assessments, regulatory advisory, and public program design.</p>
       </div>
       <div class="service-card">
-        <i class="fas fa-chart-line"></i>
+
+   <i class="fas fa-chart-line"></i>
         <h3>Data & Analytics</h3>
         <p>Dashboards, predictive insights, and geospatial/economic mapping.</p>
       </div>
@@ -297,8 +300,9 @@
   <section id="contact" class="contact">
     <h2>Let’s Work Together</h2>
     <form action="#" method="post">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
+      <!-- Added autocomplete attributes for better UX -->
+      <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
+      <input type="email" name="email" placeholder="Your Email" autocomplete="email" required>
       <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
@@ -308,11 +312,11 @@
   <footer>
     <p>&copy; 2025 Economic Solutions Consulting Group. All rights reserved.</p>
     <div class="icons">
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
     </div>
   </footer>
 
 </body>
-</html>
+</html>     
