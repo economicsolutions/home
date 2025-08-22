@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Economic Solutions — Growth Catalyst MVP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root{
+      --brand:#1f5fbf; --ink:#0a0a0a; --muted:#6b7280; --bg:#ffffff; --card:#f8fafc; --line:#e5e7eb; --ok:#1aa27a; --warn:#d97706; --bad:#dc2626;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:var(--bg)}
+    header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+    .brand{font-weight:800;color:var(--brand)}
+    .nav a{color:var(--ink);text-decoration:none;margin-left:18px}
+    .hero{min-height:56vh;display:grid;place-items:center;padding:48px 20px;background:linear-gradient(180deg,rgba(31,95,191,.08),transparent)}
+    .hero h1{font-size:42px;line-height:1.1;margin:0 0 10px}
+    .hero p{color:var(--muted);max-width:720px}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:var(--brand);color:#fff;border:none;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
+    .btn.secondary{background:#0f172a}
+    main{max-width:1100px;margin:auto;padding:28px 20px 60px}
+    section{margin:28px 0;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+    h2{margin:0 0 8px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .full{grid-column:1/-1}
+    label{font-size:14px;color:var(--muted)}
+    input[type="file"], input[type="number"], input[type="text"], textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+    .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+    .kpi h3{margin:0;font-size:13px;color:var(--muted)}
+    .kpi .val{font-size:22px;font-weight:800;margin-top:6px}
+    .pill{display:inline-block;padding:3px 8px;border-radius:999px;font-size:12px;margin-left:6px}
+    .good{background:rgba(26,162,122,.12);color:var(--ok)}
+    .meh{background:rgba(217,119,6,.12);color:var(--warn)}
+    .bad{background:rgba(220,38,38,.12);color:var(--bad)}
+    table{width:100%;border-collapse:collapse}
+    th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left}
+    tfoot td{border:0}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .small{font-size:12px;color:var(--muted)}
+    .right{display:flex;justify-content:flex-end}
+    .notice{font-size:13px;color:var(--muted)}
+    .export{background:#0f766e}
+    @media (max-width:900px){.row{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}}
+    /* print */
+    @media print {
+      header,.no-print{display:none !important}
+      body{background:#fff}
+      section{border:0;background:#fff;padding:0;margin:8px 0}
+      main{max-width:none}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">ECONOMIC SOLUTIONS — The Growth Catalyst</div>
+      <nav class="no-print">
+        <a href="#data">Data</a>
+        <a href="#kpi">KPIs</a>
+        <a href="#projects">Projects</a>
+        <a href="#plan">Action Plan</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div style="text-align:center;max-width:840px">
+      <h1>Turn messy data into clear decisions — in minutes.</h1>
+      <p>Upload your CSV. We compute KPIs, chart trends, and optimize a budget-constrained portfolio of initiatives. Then we generate a
+         one-page action plan you can print, share, or execute. Built for Kathmandu first — ready for the world.</p>
+      <div class="actions no-print" style="justify-content:center;margin-top:16px">
+        <a class="btn" href="#data"><i class="fa-solid fa-upload"></i> Start with your data</a>
+        <button class="btn secondary" onclick="document.getElementById('sampleHint').open=true"><i class="fa-solid fa-file-lines"></i> See sample format</button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- DATA INPUT -->
+    <section id="data">
+      <h2>1) Bring your data</h2>
+      <p class="notice">CSV with columns: <b>date</b> (YYYY-MM-DD), <b>revenue</b>, <b>cost</b>, <b>customers</b> (optional).</p>
+      <div class="row">
+        <div>
+          <label>Upload CSV</label>
+          <input type="file" accept=".csv" id="csvFile" />
+        </div>
+        <div>
+          <label>Notes (optional)</label>
+          <input type="text" id="contextNotes" placeholder="Context, location, season, events…" />
+        </div>
+        <div class="full notice">
+          Data stays in your browser. Nothing is uploaded to a server.
+        </div>
+      </div>
+      <details id="sampleHint" class="full" style="margin-top:12px">
+        <summary>Sample CSV (copy/paste into a file)</summary>
+<pre style="overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px">
+date,revenue,cost,customers
+2025-01-01,120000,80000,400
+2025-02-01,130000,82000,420
+2025-03-01,150000,90000,450
+2025-04-01,162000,98000,470
+2025-05-01,158000,101000,465
+2025-06-01,171000,108000,490
+</pre>
+      </details>
+    </section>
+
+    <!-- KPIs -->
+    <section id="kpi">
+      <h2>2) Key Performance Indicators</h2>
+      <div class="kpis" id="kpiCards">
+        <div class="kpi"><h3>Monthly Revenue (last)</h3><div class="val" id="revNow">—</div></div>
+        <div class="kpi"><h3>MoM Growth</h3><div class="val" id="mom">—</div></div>
+        <div class="kpi"><h3>Gross Margin</h3><div class="val" id="gm">—</div></div>
+        <div class="kpi"><h3>ARPU</h3><div class="val" id="arpu">—</div></div>
+      </div>
+      <div class="row" style="margin-top:16px">
+        <div class="full">
+          <canvas id="revChart" height="120"></canvas>
+        </div>
+      </div>
+      <p class="small">ARPU = Revenue / Customers. If no customers column is present, ARPU is estimated from last known entry.</p>
+    </section>
+
+    <!-- PROJECT PORTFOLIO -->
+    <section id="projects">
+      <h2>3) Budget-constrained project optimizer</h2>
+      <div class="row">
+        <div>
+          <label>Total Budget</label>
+          <input type="number" id="budget" value="50000" min="0" step="1000">
+        </div>
+        <div>
+          <label>Weighting (Impact : Urgency : Risk)</label>
+          <input type="text" id="weights" value="0.5:0.3:0.2" />
+        </div>
+      </div>
+      <div class="actions no-print" style="margin:12px 0">
+        <button class="btn" onclick="addRow()"><i class="fa-solid fa-plus"></i> Add project</button>
+        <button class="btn" onclick="optimize()"><i class="fa-solid fa-wand-magic-sparkles"></i> Optimize selection</button>
+      </div>
+      <div style="overflow:auto;background:#fff;border:1px solid var(--line);border-radius:12px">
+        <table id="projTable">
+          <thead>
+            <tr>
+              <th style="min-width:180px">Project</th>
+              <th>Cost</th>
+              <th>Impact (1–10)</th>
+              <th>Urgency (1–10)</th>
+              <th>Risk (1–10)</th>
+              <th>Compliance</th>
+              <th class="no-print">Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="7" class="small">
+                Scoring = <code>wI*Impact + wU*Urgency − wR*Risk</code> (penalty if non-compliant). Greedy knapsack by score/cost.
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div id="optResult" class="notice" style="margin-top:10px"></div>
+    </section>
+
+    <!-- ACTION PLAN -->
+    <section id="plan">
+      <h2>4) One-page action plan</h2>
+      <div class="row">
+        <div class="full">
+          <textarea id="assumptions" rows="4" placeholder="Assumptions, constraints, or policy notes (optional)"></textarea>
+        </div>
+      </div>
+      <div class="actions no-print" style="margin-top:12px">
+        <button class="btn export" onclick="exportPlan()"><i class="fa-solid fa-print"></i> Print / Save as PDF</button>
+      </div>
+      <div id="planPreview" style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:10px">
+        <h3 style="margin-top:0">Preview: Executive Summary</h3>
+        <div id="summaryText" class="small">Upload data and run the optimizer to generate your plan.</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // --------- CSV PARSE (simple) ----------
+    function parseCSV(text){
+      const lines = text.trim().split(/\r?\n/);
+      const headers = lines.shift().split(',').map(s=>s.trim());
+      return lines.map(l=>{
+        const cells = l.split(',').map(x=>x.trim());
+        const row = {};
+        headers.forEach((h,i)=>row[h]=cells[i]);
+        return row;
+      });
+    }
+
+    // --------- GLOBAL STATE ----------
+    let series = []; // [{date:Date, revenue:Number, cost:Number, customers?:Number}]
+    let projects = []; // [{id,name,cost,impact,urgency,risk,compliant}]
+
+    // --------- UI HOOKS ----------
+    const fileInput = document.getElementById('csvFile');
+    fileInput.addEventListener('change', async (e)=>{
+      const file = e.target.files?.[0]; if(!file) return;
+      const text = await file.text();
+      const rows = parseCSV(text);
+      series = rows
+        .filter(r=>r.date&&r.revenue&&r.cost)
+        .map(r=>({
+          date: new Date(r.date),
+          revenue: Number(r.revenue),
+          cost: Number(r.cost),
+          customers: r.customers? Number(r.customers): undefined
+        }))
+        .sort((a,b)=>a.date-b.date);
+      computeKPIs();
+      drawChart();
+      updateSummary();
+    });
+
+    // --------- KPI COMPUTE ----------
+    function fmt(n){ if(n===undefined||isNaN(n)) return '—'; return n.toLocaleString();}
+    function pct(a){ return (a>=0?'+':'') + (a*100).toFixed(1) + '%'; }
+
+    function computeKPIs(){
+      const last = series.at(-1), prev = series.at(-2);
+      const revNow = last?.revenue; const costNow = last?.cost;
+      const gm = (revNow && costNow!==undefined) ? (revNow - costNow)/revNow : undefined;
+      const mom = (last && prev && prev.revenue>0) ? (last.revenue - prev.revenue)/prev.revenue : undefined;
+
+      // ARPU: prefer last customers, else last known
+      let lastCust = last?.customers;
+      if(!lastCust){
+        for(let i=series.length-1;i>=0;i--){ if(series[i].customers){ lastCust = series[i].customers; break; } }
+      }
+      const arpu = (revNow && lastCust) ? (revNow/lastCust) : undefined;
+
+      // Paint
+      document.getElementById('revNow').innerHTML = revNow? '₹ ' + fmt(revNow): '—';
+      badge('mom', mom);
+      badge('gm', gm);
+      document.getElementById('arpu').innerHTML = arpu? '₹ ' + fmt(Math.round(arpu)): '—';
+
+      function badge(id, val){
+        const el = document.getElementById(id);
+        if(val===undefined){ el.textContent='—'; return;}
+        const span = document.createElement('span');
+        span.className='pill ' + (val>0.05?'good': val>0? 'meh':'bad');
+        span.textContent = (val>0?'+':'') + (val*100).toFixed(1)+'%';
+        el.innerHTML = '';
+        el.appendChild(span);
+      }
+    }
+
+    // --------- CHART ----------
+    let revChart;
+    function drawChart(){
+      const ctx = document.getElementById('revChart');
+      const labels = series.map(s=> s.date.toISOString().slice(0,10));
+      const dataRev = series.map(s=> s.revenue);
+      const dataCost = series.map(s=> s.cost);
+      if(revChart) revChart.destroy();
+      revChart = new Chart(ctx, {
+        type:'line',
+        data:{labels,
+          datasets:[
+            {label:'Revenue', data:dataRev},
+            {label:'Cost', data:dataCost}
+          ]},
+        options:{
+          responsive:true,
+          plugins:{legend:{position:'top'}},
+          interaction:{mode:'index', intersect:false},
+          scales:{y:{beginAtZero:false}}
+        }
+      });
+    }
+
+    // --------- PROJECT TABLE ----------
+    const tbody = document.querySelector('#projTable tbody');
+    function addRow(p={}){
+      const id = crypto.randomUUID();
+      const row = { id,
+        name: p.name||'',
+        cost: p.cost||0,
+        impact: p.impact||5,
+        urgency: p.urgency||5,
+        risk: p.risk||5,
+        compliant: p.compliant??true
+      };
+      projects.push(row);
+      paintTable();
+    }
+    function delRow(id){
+      projects = projects.filter(p=>p.id!==id);
+      paintTable();
+    }
+    function paintTable(){
+      tbody.innerHTML='';
+      projects.forEach(p=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><input type="text" value="${p.name}" data-k="name" data-id="${p.id}" /></td>
+          <td><input type="number" value="${p.cost}" data-k="cost" data-id="${p.id}" min="0" step="1000"/></td>
+          <td><input type="number" value="${p.impact}" data-k="impact" data-id="${p.id}" min="1" max="10"/></td>
+          <td><input type="number" value="${p.urgency}" data-k="urgency" data-id="${p.id}" min="1" max="10"/></td>
+          <td><input type="number" value="${p.risk}" data-k="risk" data-id="${p.id}" min="1" max="10"/></td>
+          <td><input type="checkbox" ${p.compliant?'checked':''} data-k="compliant" data-id="${p.id}" /></td>
+          <td class="no-print">
+            <button class="btn" style="padding:6px 10px" onclick="delRow('${p.id}')"><i class="fa-solid fa-trash"></i></button>
+          </td>`;
+        tbody.appendChild(tr);
+      });
+      tbody.querySelectorAll('input').forEach(inp=>{
+        inp.addEventListener('input', (e)=>{
+          const id = e.target.getAttribute('data-id');
+          const key = e.target.getAttribute('data-k');
+          const item = projects.find(x=>x.id===id);
+          if(!item) return;
+          if(key==='compliant'){ item[key] = e.target.checked; }
+          else if(['cost','impact','urgency','risk'].includes(key)){ item[key] = Number(e.target.value); }
+          else { item[key] = e.target.value; }
+        });
+      });
+    }
+
+    // Seed with useful example rows
+    addRow({name:'Digitize invoicing & inventory', cost:12000, impact:8, urgency:8, risk:3, compliant:true});
+    addRow({name:'Energy efficiency retrofit (LED/HVAC tuning)', cost:9000, impact:7, urgency:6, risk:4, compliant:true});
+    addRow({name:'Customer feedback loop (QR + weekly review)', cost:2000, impact:6, urgency:9, risk:2, compliant:true});
+    addRow({name:'Open new outlet (Thamel pilot)', cost:45000, impact:8, urgency:5, risk:7, compliant:true});
+
+    // --------- OPTIMIZER ----------
+    function optimize(){
+      if(projects.length===0){ document.getElementById('optResult').textContent='No projects to optimize.'; return; }
+      // parse weights
+      let [wI,wU,wR] = (document.getElementById('weights').value||'0.5:0.3:0.2').split(':').map(Number);
+      const budget = Number(document.getElementById('budget').value||0);
+
+      // score each project
+      const scored = projects.map(p=>{
+        let score = (wI*p.impact) + (wU*p.urgency) - (wR*p.risk);
+        if(!p.compliant) score -= 3; // simple penalty
+        const density = (p.cost>0)? score / p.cost : score;
+        return {...p, score, density};
+      }).sort((a,b)=> b.density - a.density);
+
+      // greedy knapsack
+      const chosen=[]; let spend=0, totalScore=0;
+      for(const p of scored){
+        if(spend + p.cost <= budget){ chosen.push(p); spend += p.cost; totalScore += p.score; }
+      }
+
+      // write result
+      const resultEl = document.getElementById('optResult');
+      resultEl.innerHTML = `<b>Selected ${chosen.length} project(s)</b> — Spend ₹ ${spend.toLocaleString()} / Budget ₹ ${budget.toLocaleString()} — Total score ${totalScore.toFixed(1)}.<br>` +
+        chosen.map(c=>`• ${c.name} (₹${c.cost.toLocaleString()}, score ${c.score.toFixed(1)})`).join('<br>');
+
+      // update plan preview
+      updateSummary(chosen, spend, budget, totalScore);
+    }
+
+    // --------- PLAN PREVIEW & EXPORT ----------
+    function updateSummary(chosen=[], spend=0, budget=0, totalScore=0){
+      const notes = document.getElementById('contextNotes').value?.trim();
+      const asm = document.getElementById('assumptions').value?.trim();
+      const last = series.at(-1), prev = series.at(-2);
+      const mom = (last && prev && prev.revenue>0) ? (last.revenue - prev.revenue)/prev.revenue : undefined;
+      const gm = (last && last.revenue>0) ? (last.revenue-last.cost)/last.revenue : undefined;
+
+      const bullets = chosen.length? chosen.map(c=>`<li>${c.name} — ₹ ${c.cost.toLocaleString()}</li>`).join('') : '<li>Run optimizer to generate recommendations.</li>';
+
+      const html = `
+        <b>Context:</b> ${notes || '—'}<br>
+        <b>Signal:</b> Growth ${mom!==undefined? ((mom>=0?'+':'')+(mom*100).toFixed(1)+'% MoM'):'—'}, Gross margin ${gm!==undefined? ((gm*100).toFixed(1)+'%'):'—'}<br>
+        <b>Priority Portfolio:</b> Budget ₹ ${budget?budget.toLocaleString():'—'}, Planned spend ₹ ${spend?spend.toLocaleString():'—'}<br>
+        <ul>${bullets}</ul>
+        <b>Next 4 weeks:</b>
+        <ol>
+          <li>Kickoff & KPI baseline (Week 1).</li>
+          <li>Implement top 2 quick wins (Week 2–3).</li>
+          <li>Validate results & handover simple dashboard (Week 4).</li>
+        </ol>
+        <b>Assumptions & constraints:</b> ${asm || '—'}
+      `;
+      document.getElementById('summaryText').innerHTML = html;
+    }
+
+    function exportPlan(){
+      window.print(); // use browser print to PDF
+    }
+  </script>
+</body>
+</html>
