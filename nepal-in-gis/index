@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>High-Res Subnational GDP Map</title>
+		<style>
+			body, html {margin: 0; padding: 0; height: 100%; }
+			iframe { border: none; width: 100%; height: 100vh; }
+		</style>
+	</head>
+	<body>
+		<iframe src="!!Enter your link here!!"></iframe>
+	</body>
+</html>
