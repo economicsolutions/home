@@ -9,6 +9,6 @@
 		</style>
 	</head>
 	<body>
-		<iframe src="!!https://ntl-0000001.projects.earthengine.app/view/gdp-map"></iframe>
+		<iframe src="https://ntl-0000001.projects.earthengine.app/view/gdp-map"></iframe>
 	</body>
 </html>
