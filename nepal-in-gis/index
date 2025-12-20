@@ -28,7 +28,7 @@
 <body>
   <h1>High-Resolution Subnational GDP Map</h1>
   <p>Click below to open the interactive map in a new tab.</p>
-  <a class="map-button" href="https://officialdevkotamail108.users.earthengine.app/view/gdpdensitymap" target="_blank">
+  <a class="map-button" href="https://g-shdi.projects.earthengine.app/view/gdp-density-usdm2" target="_blank">
     View Interactive Map
   </a>
 </body>
