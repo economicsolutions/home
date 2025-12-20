@@ -129,7 +129,6 @@
       background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     }
 
-    /* Enhanced background image handling */
     .hero-bg::before {
       content: '';
       position: absolute;
@@ -152,19 +151,6 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.4);
     }
-
-    /* If you want to use actual images, replace the above with: */
-    /*
-    .hero-bg-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-    */
 
     .hero-content {
       position: relative;
@@ -369,6 +355,102 @@
       margin: 0;
     }
 
+    /* GIS Viewer Styles */
+    .gis-section {
+        background: #f0f2f5;
+    }
+
+    .map-wrapper {
+        position: relative;
+        width: 100%;
+        background: #fff;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        /* Flex column to keep controls at top and iframe filling rest */
+        display: flex;
+        flex-direction: column;
+        /* Default height on page */
+        height: 80vh;
+        max-height: 800px;
+        transition: all 0.3s ease;
+    }
+
+    /* Fullscreen State */
+    .map-wrapper:fullscreen {
+        border-radius: 0;
+        max-height: none;
+        height: 100vh;
+        width: 100vw;
+        padding: 0;
+    }
+    
+    /* Vendor prefixes for fullscreen compatibility */
+    .map-wrapper:-webkit-full-screen { width: 100%; height: 100%; }
+    .map-wrapper:-moz-full-screen { width: 100%; height: 100%; }
+    .map-wrapper:-ms-fullscreen { width: 100%; height: 100%; }
+
+    .map-controls {
+        background: #fff;
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        z-index: 10;
+    }
+
+    .map-tabs {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .map-btn {
+        padding: 0.6rem 1.2rem;
+        border: 2px solid var(--primary-color);
+        background: transparent;
+        color: var(--primary-color);
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 0.9rem;
+    }
+
+    .map-btn:hover {
+        background: rgba(52, 152, 219, 0.1);
+    }
+
+    .map-btn.active {
+        background: var(--primary-color);
+        color: #fff;
+    }
+
+    .fullscreen-btn {
+        background: none;
+        border: none;
+        color: var(--text-light);
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: var(--transition);
+        padding: 0.5rem;
+    }
+
+    .fullscreen-btn:hover {
+        color: var(--primary-color);
+        transform: scale(1.1);
+    }
+
+    .map-frame {
+        width: 100%;
+        height: 100%;
+        flex-grow: 1;
+        border: none;
+        background: #f9f9f9;
+    }
+
     /* Contact Section */
     .contact {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
@@ -510,6 +592,15 @@
       .social-links {
         gap: 1rem;
       }
+      
+      .map-controls {
+          flex-direction: column;
+          align-items: flex-start;
+      }
+      .fullscreen-btn {
+          align-self: flex-end;
+          margin-top: -3rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -554,23 +645,17 @@
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <!-- Updated Nav Link points to internal section -->
+      <a href="#gis-viewer">Nepal in GIS</a>
       <a href="#contact">Contact</a>
-      <a href="https://officialdevkotamail108.users.earthengine.app/view/gdpdensitymap" 
-         target="_blank" 
-         rel="noopener">
-        Nepal in GIS
-      </a>
     </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg">
-      <!-- Responsive hero images optimized for your specific files -->
       <picture>
-        <!-- Large image for desktop and ultra-wide screens (1537px and above) -->
         <source srcset="images/hero-bg-d.png" media="(min-width: 1537px)">
-        <!-- Medium image for tablets, small desktops, and mobile (1536px and below) -->
         <img src="images/hero-bg.png" alt="Economic Solutions Consulting - Professional Business Background" class="hero-bg-image">
       </picture>
     </div>
@@ -642,6 +727,38 @@
     </div>
   </section>
 
+  <!-- GIS Viewer Section (NEW) -->
+  <section id="gis-viewer" class="gis-section">
+      <div class="container">
+          <h2 class="section-title">Nepal Economic GIS</h2>
+          
+          <div class="map-wrapper" id="mapContainer">
+              <!-- Controls: Map Selection & Fullscreen -->
+              <div class="map-controls">
+                  <div class="map-tabs">
+                      <button class="map-btn active" onclick="switchMap('usdm2', this)">
+                          GDP Density (USD/m²)
+                      </button>
+                      <button class="map-btn" onclick="switchMap('500x500', this)">
+                          GDP Density (500x500)
+                      </button>
+                  </div>
+                  <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Toggle Fullscreen">
+                      <i class="fas fa-expand"></i>
+                  </button>
+              </div>
+              
+              <!-- Iframe -->
+              <iframe 
+                  id="gisFrame"
+                  class="map-frame" 
+                  src="https://g-shdi.projects.earthengine.app/view/gdp-density-usdm2"
+                  allowfullscreen>
+              </iframe>
+          </div>
+      </div>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" class="contact">
     <div class="container">
@@ -700,11 +817,69 @@
       });
     });
 
-    // Form submission (you can replace this with your actual form handling)
+    // Form submission
     document.querySelector('.contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Thank you for your message! We will get back to you soon.');
       this.reset();
+    });
+
+    // --- GIS Viewer Logic ---
+    const mapUrls = {
+        'usdm2': 'https://g-shdi.projects.earthengine.app/view/gdp-density-usdm2',
+        '500x500': 'https://g-shdi.projects.earthengine.app/view/gdp-density-map--500-x-500--nepal'
+    };
+
+    function switchMap(mapType, btnElement) {
+        // Update Iframe Source
+        const iframe = document.getElementById('gisFrame');
+        if(iframe.src !== mapUrls[mapType]) {
+            iframe.src = mapUrls[mapType];
+        }
+
+        // Update Active Button State
+        document.querySelectorAll('.map-btn').forEach(btn => btn.classList.remove('active'));
+        btnElement.classList.add('active');
+    }
+
+    function toggleFullscreen() {
+        const container = document.getElementById('mapContainer');
+        const icon = document.querySelector('.fullscreen-btn i');
+
+        if (!document.fullscreenElement) {
+            if (container.requestFullscreen) {
+                container.requestFullscreen();
+            } else if (container.mozRequestFullScreen) { /* Firefox */
+                container.mozRequestFullScreen();
+            } else if (container.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                container.webkitRequestFullscreen();
+            } else if (container.msRequestFullscreen) { /* IE/Edge */
+                container.msRequestFullscreen();
+            }
+            icon.classList.remove('fa-expand');
+            icon.classList.add('fa-compress');
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+            icon.classList.remove('fa-compress');
+            icon.classList.add('fa-expand');
+        }
+    }
+    
+    // Listen for fullscreen change events (ESC key press) to reset icon
+    document.addEventListener('fullscreenchange', (event) => {
+        const icon = document.querySelector('.fullscreen-btn i');
+        if (!document.fullscreenElement) {
+             icon.classList.remove('fa-compress');
+             icon.classList.add('fa-expand');
+        }
     });
   </script>
 
