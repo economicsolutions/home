@@ -645,7 +645,6 @@
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
-      <!-- Updated Nav Link points to internal section -->
       <a href="#gis-viewer">Nepal in GIS</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -727,7 +726,7 @@
     </div>
   </section>
 
-  <!-- GIS Viewer Section (NEW) -->
+  <!-- GIS Viewer Section -->
   <section id="gis-viewer" class="gis-section">
       <div class="container">
           <h2 class="section-title">Nepal Economic GIS</h2>
@@ -759,11 +758,20 @@
       </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact Section (UPDATED) -->
   <section id="contact" class="contact">
     <div class="container">
       <h2 class="section-title">Let's Work Together</h2>
-      <form class="contact-form" action="#" method="post">
+      
+      <!-- UPDATED FORM ACTION -->
+      <form class="contact-form" action="https://formsubmit.co/economicsolutions.cg@gmail.com" method="POST">
+        
+        <!-- FormSubmit Configurations -->
+        <input type="hidden" name="_subject" value="New Inquiry from ESCG Website">
+        <input type="hidden" name="_captcha" value="false">
+        <!-- Redirect to home page after submission -->
+        <input type="hidden" name="_next" value="https://officialdevkotamail108.github.io/ESCG/">
+
         <div class="form-group">
           <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
         </div>
@@ -817,13 +825,6 @@
       });
     });
 
-    // Form submission
-    document.querySelector('.contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your message! We will get back to you soon.');
-      this.reset();
-    });
-
     // --- GIS Viewer Logic ---
     const mapUrls = {
         'usdm2': 'https://g-shdi.projects.earthengine.app/view/gdp-density-usdm2',
@@ -831,13 +832,10 @@
     };
 
     function switchMap(mapType, btnElement) {
-        // Update Iframe Source
         const iframe = document.getElementById('gisFrame');
         if(iframe.src !== mapUrls[mapType]) {
             iframe.src = mapUrls[mapType];
         }
-
-        // Update Active Button State
         document.querySelectorAll('.map-btn').forEach(btn => btn.classList.remove('active'));
         btnElement.classList.add('active');
     }
@@ -873,7 +871,6 @@
         }
     }
     
-    // Listen for fullscreen change events (ESC key press) to reset icon
     document.addEventListener('fullscreenchange', (event) => {
         const icon = document.querySelector('.fullscreen-btn i');
         if (!document.fullscreenElement) {
