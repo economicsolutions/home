@@ -635,6 +635,15 @@
       outline: 2px solid var(--primary-color);
       outline-offset: 2px;
     }
+    /* Logo in hero */
+    .hero-logo {
+      display: block;
+      width: clamp(160px, 28vw, 260px);
+      height: auto;
+      margin: 0 auto 1.75rem;
+      filter: brightness(0) invert(1) drop-shadow(0 2px 12px rgba(0,0,0,0.35));
+      opacity: 0.92;
+    }
   </style>
 </head>
 <body>
@@ -659,6 +668,7 @@
       </picture>
     </div>
     <div class="hero-content">
+      <img src="images/ESCG_LOGO.jpg" alt="ESCG Logo" class="hero-logo">
       <h1>Decoding Markets, Driving Growth.</h1>
       <p>Helping businesses, organisations, and government make better decisions — with evidence, not guesswork.</p>
       <a href="#contact" class="cta-button">Get in Touch</a>
