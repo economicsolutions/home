@@ -173,6 +173,52 @@
       }
     }
 
+    /* Logo pill — frosted glass strip, no hard box edges */
+    .hero-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 0.85rem 2rem 0.85rem 1.4rem;
+      margin-bottom: 2rem;
+      gap: 1rem;
+    }
+
+    .hero-logo-wrap svg {
+      width: clamp(38px, 5vw, 52px);
+      height: clamp(38px, 5vw, 52px);
+      flex-shrink: 0;
+    }
+
+    .hero-logo-text {
+      text-align: left;
+      line-height: 1;
+    }
+
+    .hero-logo-text .logo-abbr {
+      display: block;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-logo-text .logo-full {
+      display: block;
+      font-size: clamp(0.55rem, 1vw, 0.7rem);
+      font-weight: 400;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.4;
+    }
+
     .hero-content h1 {
       font-size: clamp(2.5rem, 6vw, 5rem);
       font-weight: 800;
@@ -635,15 +681,6 @@
       outline: 2px solid var(--primary-color);
       outline-offset: 2px;
     }
-    /* Logo in hero */
-    .hero-logo {
-      display: block;
-      width: clamp(160px, 28vw, 260px);
-      height: auto;
-      margin: 0 auto 1.75rem;
-      filter: brightness(0) invert(1) drop-shadow(0 2px 12px rgba(0,0,0,0.35));
-      opacity: 0.92;
-    }
   </style>
 </head>
 <body>
@@ -668,8 +705,39 @@
       </picture>
     </div>
     <div class="hero-content">
-      <img src="images/ESCG_LOGO.jpg" alt="ESCG Logo" class="hero-logo">
-      <h1>Decoding Markets, Driving Growth.</h1>
+
+      <!-- Inline SVG logo — no image file needed, fully transparent, scales perfectly -->
+      <div class="hero-logo-wrap">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ESCG icon">
+          <!-- Gear body -->
+          <path d="M50 28 L53.5 22 L58 23.5 L57.5 30
+            C60.5 31.2 63.2 33 65.5 35.2 L71.5 33.5 L74 37.5 L69.5 42
+            C70.5 44.8 71 47.8 71 50.8 L77 53 L76 57.5 L70 57
+            C68.8 60 67 62.5 64.8 64.6 L67 70.5 L63 73 L58.5 68.5
+            C55.8 69.5 52.9 70 50 70
+            C47.1 70 44.2 69.5 41.5 68.5 L37 73 L33 70.5 L35.2 64.6
+            C33 62.5 31.2 60 30 57 L24 57.5 L23 53 L29 50.8
+            C29 47.8 29.5 44.8 30.5 42 L26 37.5 L28.5 33.5 L34.5 35.2
+            C36.8 33 39.5 31.2 42.5 30 L42 23.5 L46.5 22 Z"
+            fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/>
+          <!-- Gear center hole -->
+          <circle cx="50" cy="50" r="11" fill="rgba(20,50,100,0.45)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+          <!-- Chart line -->
+          <polyline points="34,63 44,51 52,56 66,37" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <!-- Arrow head -->
+          <polyline points="60,33 66,37 63,43" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <!-- Leaf -->
+          <path d="M41 31 C37 25 30 25 28 29 C26 33 29 39 35 38 C34 35 36 31 41 31Z"
+            fill="rgba(255,255,255,0.8)" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <path d="M35 38 C32 34 33 29 35 28" stroke="rgba(30,60,120,0.5)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="hero-logo-text">
+          <span class="logo-abbr">ESCG</span>
+          <span class="logo-full">Economic Solutions<br>Consulting Group</span>
+        </div>
+      </div>
+
+      <h1>Decoding Markets.<br>Driving Growth.</h1>
       <p>Helping businesses, organisations, and government make better decisions — with evidence, not guesswork.</p>
       <a href="#contact" class="cta-button">Get in Touch</a>
     </div>
